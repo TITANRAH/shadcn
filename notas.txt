@@ -1,0 +1,4 @@
+npm i react-hook-form zod 
+instalar shadcn decidi instalar todos los compoenntes 
+buscar en google doc y ahi saldra el comando 
+
