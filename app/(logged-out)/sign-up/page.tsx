@@ -31,8 +31,13 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
 import { Calendar } from "@/components/ui/calendar";
+import { format } from "date-fns";
 
 function SignUpPage() {
   const form = useForm<z.infer<typeof formSignUpSchema>>({
@@ -47,9 +52,9 @@ function SignUpPage() {
   };
 
   const accountType = form.watch("accountType");
-  
-  const dobFromDate = new Date()
-  dobFromDate.setFullYear(dobFromDate.getFullYear() - 120)
+
+  const dobFromDate = new Date();
+  dobFromDate.setFullYear(dobFromDate.getFullYear() - 120);
 
   return (
     <>
@@ -116,14 +121,17 @@ function SignUpPage() {
                             variant="outline"
                             className="normal-case flex justify-between pr-1"
                           >
-                            <span>Pick a Date</span>
-                            <CalendarIcon/>
-                           
+                            {!!field.value ? (
+                              format(field.value, "PPP")
+                            ) : (
+                              <span>Pick a Date</span>
+                            )}
+                            <CalendarIcon />
                           </Button>
                         </FormControl>
                       </PopoverTrigger>
-                      <PopoverContent align="start" className="w-auto p-0">
-                          <Calendar 
+                      <PopoverContent align="start" className="w-autop-0">
+                        <Calendar
                           mode="single"
                           defaultMonth={field.value}
                           selected={field.value}
@@ -133,9 +141,9 @@ function SignUpPage() {
                           // parte el calendario desde el mes actual
                           fromDate={dobFromDate}
                           toDate={new Date()}
-                          // disabled={[new Date('2024-04-30')]}
+                          disabled={[new Date('2024-04-30')]}
                           captionLayout="dropdown-buttons"
-                          />
+                        />
                       </PopoverContent>
                     </Popover>
 
