@@ -141,7 +141,7 @@ function SignUpPage() {
                           // parte el calendario desde el mes actual
                           fromDate={dobFromDate}
                           toDate={new Date()}
-                          disabled={[new Date('2024-04-30')]}
+                          disabled={[new Date("2024-04-30")]}
                           captionLayout="dropdown-buttons"
                         />
                       </PopoverContent>
@@ -190,6 +190,43 @@ function SignUpPage() {
                   />
                 </>
               )}
+
+              <FormField
+                control={form.control}
+                name="password"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Password:</FormLabel>
+                    <FormControl>
+                      <Input
+                        placeholder="********"
+                        type="password"
+                        {...field}
+                      />
+                    </FormControl>
+
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="passwordConfirm"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Password:</FormLabel>
+                    <FormControl>
+                      <Input
+                        placeholder="********"
+                        type="password"
+                        {...field}
+                      />
+                    </FormControl>
+
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
 
               <Button
                 className="bg-pink-700 cursor-pointer text-white hover:bg-pink-500"
